@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IslamiCore - Jangan Membuat Temanmu Terjatuh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset & Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --neon-blue: #00f2ff;
+            --deep-space: #05060a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--deep-space);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 242, 255, 0.05) 0%, transparent 40%);
+        }
+
+        /* Navbar Container */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 6%;
+            height: 80px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo Area */
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        /* Hover Effect Line */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after, 
+        .nav-item.active a::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* Content Container */
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .container {
+            background: rgba(18, 18, 24, 0.8);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        .container h1 {
+            color: var(--neon-blue);
+            border-bottom: 2px solid rgba(0, 242, 255, 0.3);
+            padding-bottom: 14px;
+            margin-top: 0;
+            font-size: 26px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .container h2 {
+            color: #90cdf4;
+            margin-top: 30px;
+            font-size: 20px;
+            border-left: 4px solid var(--neon-blue);
+            padding-left: 12px;
+            text-align: left;
+        }
+
+        .container p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #cbd5e0;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .container ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .container li {
+            margin-bottom: 14px;
+            font-size: 16px;
+            color: #cbd5e0;
+            text-align: left;
+        }
+
+        .container strong {
+            color: #ffffff;
+        }
+
+        blockquote {
+            background: rgba(0, 242, 255, 0.05);
+            border-left: 4px solid var(--neon-blue);
+            margin: 20px 0;
+            padding: 18px 20px;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #e2e8f0;
+            line-height: 1.8;
+        }
+
+        .img-container {
+            margin: 30px 0 10px;
+            text-align: left;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-glass);
+        }
+
+        .caption {
+            font-size: 14px;
+            color: #a0aec0;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Tombol Navigasi Kembali */
+        .back-btn-wrapper {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--neon-blue);
+            color: #05060a;
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">KINEXZ<span>CORE</span></div>
+        
+        <ul class="nav-links">
+            <li class="nav-item active"><a href="#beranda">Beranda</a></li>
+        </ul>
+
+        <div style="width: 150px; text-align: right;">
+            <small style="color: var(--neon-blue); font-size: 0.7rem; letter-spacing: 2px;">SYSTEM ACTIVE</small>
+        </div>
+    </nav>
+
+    <!-- Hero / Beranda Section -->
+    <div class="hero" id="beranda">
+        <h1>JANGAN MEMBUAT TEMANMU TERJATUH</h1>
+        <p style="color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase;">Eksplorasi Kebijaksanaan dalam Digitalisasi</p>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="container">
+            <h1>Jangan Membuat Temanmu Terjatuh: Pengertian, Dalil, dan Contoh</h1>
+
+            <h2>1. Pengertian</h2>
+            <p>
+                <strong>Jangan Membuat Temanmu Terjatuh</strong> adalah prinsip moral dan etika sosial untuk senantiasa saling mendukung, menjaga kehormatan, serta tidak menjerumuskan, merusak reputasi, atau memanfaatkan kelemahan sahabat demi kepentingan pribadi. Prinsip ini mengajarkan kita agar menjadi sahabat yang mengangkat derajat dan membimbing ke arah kebaikan, bukan justru menjadi alasan terpuruknya seorang teman.
+            </p>
+
+            <h2>2. Dalil</h2>
+            <p><strong>Al-Qur'an (QS. Al-Hujurat: 11)</strong></p>
+            <blockquote>
+                "Wahai orang-orang yang beriman! Janganlah suatu kaum mengolok-olok kaum yang lain (karena) boleh jadi mereka (yang diolok-olok) lebih baik dari mereka (yang mengolok-olok)... Dan janganlah saling mencela di antara kamu dan janganlah saling memanggil dengan gelar-gelar yang buruk..."
+            </blockquote>
+
+            <p><strong>Hadis Riwayat Muslim</strong></p>
+            <blockquote>
+                "Seorang Muslim adalah saudara bagi Muslim lainnya, dia tidak boleh menganiayanya, tidak boleh menyerahkannya (kepada musuh), dan tidak boleh menghinakannya..."
+            </blockquote>
+
+            <h2>3. Contoh Perbuatan</h2>
+            <ul>
+                <li>
+                    <p><strong>Menjaga Aib dan Kelemahan Teman:</strong> Tidak menceritakan rahasia atau masalah pribadi teman kepada orang lain yang justru dapat mempermalukan atau menjatuhkan harga diri mereka.</p>
+                </li>
+                <li>
+                    <p><strong>Bersaing Secara Sehat:</strong> Mengutamakan kejujuran dalam belajar maupun bekerja tanpa melakukan fitnah, kecurangan, atau menjatuhkan nama baik teman.</p>
+                </li>
+                <li>
+                    <p><strong>Mengingatkan dengan Santun:</strong> Menegur teman dengan cara yang baik dan santun ketika mereka mulai melakukan hal yang buruk, bukan malah ikut mendukung atau membiarkannya terjerumus.</p>
+                </li>
+                <li>
+                    <p><strong>Setia Mendampingi di Masa Sulit:</strong> Hadir mendampingi saat teman sedang mengalami masa-masa sulit, alih-alih meninggalkan atau menertawakan kegagalannya.</p>
+                </li>
+            </ul>
+
+            <h2>4. Ilustrasi</h2>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000&auto=format&fit=crop" alt="Persahabatan tulus yang saling mendukung">
+                <p class="caption">Ilustrasi: Sahabat sejati yang saling merangkul dan menguatkan satu sama lain.</p>
+            </div>
+
+            <!-- Tombol Kembali ke Beranda -->
+            <div class="back-btn-wrapper">
+                <a href="#beranda" class="btn-back">↑ Kembali ke Beranda</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

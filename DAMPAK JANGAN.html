@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IslamiCore - Dampak Membuat Teman Terjatuh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset & Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --neon-blue: #00f2ff;
+            --deep-space: #05060a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--deep-space);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 242, 255, 0.05) 0%, transparent 40%);
+        }
+
+        /* Navbar Container */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 6%;
+            height: 80px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo Area */
+        .logo {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            height: 100%;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+        }
+
+        /* Hover Effect Line */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+            transition: width 0.4s ease;
+        }
+
+        .nav-links a:hover::after, 
+        .nav-item.active a::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* Content Container */
+        .content-wrapper {
+            max-width: 850px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .container {
+            background: rgba(18, 18, 24, 0.8);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        .container h1 {
+            color: var(--neon-blue);
+            border-bottom: 2px solid rgba(0, 242, 255, 0.3);
+            padding-bottom: 14px;
+            margin-top: 0;
+            font-size: 26px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .container h2 {
+            color: #90cdf4;
+            margin-top: 30px;
+            font-size: 20px;
+            border-left: 4px solid var(--neon-blue);
+            padding-left: 12px;
+            text-align: left;
+        }
+
+        .container p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #cbd5e0;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .container ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .container li {
+            margin-bottom: 14px;
+            font-size: 16px;
+            color: #cbd5e0;
+            text-align: left;
+        }
+
+        .container strong {
+            color: #ffffff;
+        }
+
+        blockquote {
+            background: rgba(0, 242, 255, 0.05);
+            border-left: 4px solid var(--neon-blue);
+            margin: 20px 0;
+            padding: 18px 20px;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #e2e8f0;
+            line-height: 1.8;
+        }
+
+        .img-container {
+            margin: 30px 0 10px;
+            text-align: left;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-glass);
+        }
+
+        .caption {
+            font-size: 14px;
+            color: #a0aec0;
+            margin-top: 8px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">KINEXZ<span>CORE</span></div>
+        
+        <ul class="nav-links">
+            <li class="nav-item active"><a href="index.html">Beranda</a></li>
+        </ul>
+
+        <div style="width: 150px; text-align: right;">
+            <small style="color: var(--neon-blue); font-size: 0.7rem; letter-spacing: 2px;">SYSTEM ACTIVE</small>
+        </div>
+    </nav>
+
+    <!-- Hero / Beranda Section -->
+    <div class="hero" id="beranda">
+        <h1>DAMPAK MEMBUAT TEMAN TERJATUH</h1>
+        <p style="color: rgba(255,255,255,0.5); letter-spacing: 5px; text-transform: uppercase;">Analisis Akibat Sosial, Kebatinan, dan Akhlak Ukhuwah</p>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+        <div class="container">
+            <h1>Analisis Mendalam: Dampak Perbuatan Menjatuhkan Teman dalam Islam</h1>
+
+            <h2>1. Pengantar Kebijaksanaan dan Ukhuwah</h2>
+            <p>
+                Persahabatan dalam Islam bukan sekadar interaksi sosial biasa, melainkan ikatan ukhuwah yang dilandasi oleh rasa iman dan ketakwaan. Ketika seseorang sengaja merendahkan, membocorkan aib, atau menjerumuskan temannya sendiri, ia sebenarnya telah merusak tatanan persaudaraan yang diperintahkan oleh Allah SWT dan Rasulullah SAW. Memahami dampak dari perbuatan negatif ini sangat penting agar kita senantiasa waspada dan menjaga kehormatan sesama.
+            </p>
+
+            <h2>2. Landasan Dalil Kebersamaan</h2>
+            <p><strong>Hadis Riwayat Al-Bukhari & Muslim</strong></p>
+            <blockquote>
+                "Perumpamaan orang-orang yang beriman dalam hal saling mencintai, menyayangi, dan mengasihi bagaikan satu tubuh. Apabila ada salah satu anggota tubuh yang sakit, maka seluruh tubuhnya akan ikut merasa sakit dengan tidak bisa tidur dan demam."
+            </blockquote>
+
+            <p><strong>Al-Qur'an (QS. Al-Hujurat: 10)</strong></p>
+            <blockquote>
+                "Sesungguhnya orang-orang mukmin itu bersaudara, karena itu damaikanlah antara kedua saudaramu dan bertakwalah kepada Allah agar kamu mendapat rahmat."
+            </blockquote>
+
+            <h2>3. Dampak Buruk (Tindakan Menjatuhkan Teman)</h2>
+            <ul>
+                <li>
+                    <p><strong>Kerusakan Mental dan Trauma Psikologis:</strong> Teman yang dijatuhkan atau dikhianati akan mengalami penurunan rasa percaya diri yang drastis, kecemasan sosial, hingga trauma berkepanjangan dalam membangun kepercayaan kembali dengan orang lain.</p>
+                </li>
+                <li>
+                    <p><strong>Terputusnya Tali Silaturahmi (Ukhuwah):</strong> Sikap saling menjatuhkan menghilangkan rasa saling menghormati dan menghancurkan ikatan silaturahmi secara permanen, padahal menyambung silaturahmi adalah kewajiban agama.</p>
+                </li>
+                <li>
+                    <p><strong>Menciptakan Lingkungan yang Toksik:</strong> Kebiasaan merendahkan atau mengadu domba di lingkungan persahabatan memicu iklim persaingan yang tidak sehat, saling curiga, dan hilangnya rasa aman di dalam kelompok.</p>
+                </li>
+                <li>
+                    <p><strong>Gugurnya Kehormatan dan Berdosa Besar:</strong> Pelaku yang suka merusak reputasi teman akan kehilangan pandangan baik dari masyarakat serta menanggung dosa fitnah dan ghibah yang amat berat di akhirat kelak.</p>
+                </li>
+                <li>
+                    <p><strong>Terhalangnya Rahmat Allah:</strong> Permusuhan yang dipicu oleh tindakan merendahkan saudara sesama muslim dapat menghambat datangnya ampunan dan keberkahan dalam kehidupan sehari-hari.</p>
+                </li>
+            </ul>
+
+            <h2>4. Dampak Positif (Saling Menguatkan dan Merangkul)</h2>
+            <ul>
+                <li>
+                    <p><strong>Terbangunnya Karakter Tangguh Bersama:</strong> Dukungan moral saat teman berada di titik terendah membantu mereka bangkit dari kesulitan, menciptakan pribadi yang lebih tegar dan optimis.</p>
+                </li>
+                <li>
+                    <p><strong>Menumbuhkan Kedamaian Hati:</strong> Menjaga nama baik dan kehormatan teman melahirkan rasa damai, saling menghargai, serta mempererat pertolongan Allah SWT di kala kita butuh bantuan.</p>
+                </li>
+                <li>
+                    <p><strong>Meneladani Sunnah Rasulullah SAW:</strong> Menjadi sahabat yang senantiasa menutupi aib dan membimbing teman ke arah kebaikan adalah wujud nyata dari pengamalan akhlakul karimah.</p>
+                </li>
+            </ul>
+
+            <h2>5. Gambar Ilustrasi Islami</h2>
+            <div class="img-container">
+                <img src="watermarked_img_12562282780212685788.jpg" alt="Suasana silaturahmi dan kebersamaan Islami saling membantu[cite: 1]">
+                <p class="caption">Ilustrasi: Kebersamaan dalam kehangatan ukhuwah Islamiyah yang saling mendoakan dan menguatkan satu sama lain[cite: 1].</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
